@@ -1,14 +1,19 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import BlogPost from "../components/BlogPost.astro";
+
 import "../styles/global.css";
 
 const pageTitle = "pau, &c - Blog";
+const allPosts = Object.values(
+  import.meta.glob("./posts/*.md", { eager: true })
+);
 ---
 
 <BaseLayout pageTitle={pageTitle}>
   <p>
-    I am working through Astro's introductory tutorial. This is the second
-    page on my website, and it's the first one I built myself!
+    I am working through Astro's introductory tutorial. This is the second page
+    on my website, and it's the first one I built myself!
   </p>
 
   <p>
@@ -16,8 +21,10 @@ const pageTitle = "pau, &c - Blog";
     back and see how my journey is going!
   </p>
   <ul>
-    <li><a href="/posts/post-1/">Post 1</a></li>
-    <li><a href="/posts/post-2/">Post 2</a></li>
-    <li><a href="/posts/post-3/">Post 3</a></li>
+    {
+      allPosts.map((post: any) => (
+        <BlogPost url={post.url} title={post.frontmatter.title} />
+      ))
+    }
   </ul>
 </BaseLayout>
