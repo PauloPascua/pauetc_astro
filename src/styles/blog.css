@@ -1,0 +1,14 @@
+.description {
+  color: #58595a;
+  font-size: 1.25rem;
+  font-style: italic;
+  font-family: sans-serif;
+}
+
+.tags {
+  font-style: italic;
+}
+
+.pubdate {
+  font-size: 0.9rem;
+}
